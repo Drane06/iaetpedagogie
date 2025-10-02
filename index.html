@@ -20,11 +20,11 @@
         html:focus-within{scroll-behavior:smooth}
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, var(--violet-1) 0%, var(--violet-2) 100%);
+            background: linear-gradient(135deg, var(--green-1) 0%, var(--violet-2) 100%);
             padding: 20px; min-height: 10vh;
         }
         .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        h1 { color: var(--violet-1); text-align: center; margin-bottom: 15px; font-size: 2.2em; }
+        h1 { color: var(--green-1); text-align: center; margin-bottom: 15px; font-size: 2.2em; }
         .subtitle { text-align:center; color:#666; margin-bottom: 35px; font-size: 1.1em; }
         
         /* --- Instructions CSS (kept but unused) --- */
@@ -90,21 +90,21 @@
         .card.tool .card-title { color: var(--green-2); }
         .card.precaution{ border-color: var(--orange-1); }
 
-        .card.dragging { opacity: 0.5; border: 2px dashed var(--violet-1); }
+        .card.dragging { opacity: 0.5; border: 2px dashed var(--green-1); }
         .card.hidden { display: none; }
         
         /* --- Task Selection Area (The one the user clicks, not drags) --- */
         .task-area { margin-bottom: 30px; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; background: #fff; }
-        .task-area h3 { color: var(--violet-1); margin-bottom: 15px; font-size: 1.3em; }
+        .task-area h3 { color: var(--green-1); margin-bottom: 15px; font-size: 1.3em; }
         .task-list { display: flex; flex-wrap: wrap; gap: 10px; }
         .card.task { 
             cursor: pointer; 
-            border: 2px solid var(--violet-1); 
+            border: 2px solid var(--green-1); 
             color: var(--violet-2);
             font-weight: 700;
         }
         .card.task:hover { background: #f8f9ff; }
-        .card.task.selected { background: var(--violet-1); color: white; border-color: var(--violet-2); transform: scale(1.03); }
+        .card.task.selected { background: var(--green-1); color: white; border-color: var(--violet-2); transform: scale(1.03); }
         .card.task.completed { 
             background-color: var(--completed); 
             color: var(--teal); 
@@ -119,7 +119,7 @@
         .drop-zone-container { 
             display: flex; gap: 20px; margin-bottom: 30px; 
             padding: 20px; background: var(--drop-zone-bg); 
-            border-radius: 12px; border: 2px dashed var(--violet-1);
+            border-radius: 12px; border: 2px dashed var(--green-1);
             align-items: stretch;
         }
         .drop-slot {
@@ -149,7 +149,7 @@
 
         /* Progress */
         .progress{ height:10px; background:#eef2ff; border-radius:999px; overflow:hidden; margin:10px 0 30px; /* Ajout d'une marge pour l'alignement */ }
-        .bar{ height:100%; width:0%; background: linear-gradient(90deg, var(--violet-1), var(--violet-2)); transition: width .3s ease }
+        .bar{ height:100%; width:0%; background: linear-gradient(90deg, var(--green-1), var(--violet-2)); transition: width .3s ease }
         
         /* Custom Modal */
         #customModal{ position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; justify-content:center; align-items:center; z-index:1000; opacity:0; transition:opacity .25s ease }

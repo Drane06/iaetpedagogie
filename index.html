@@ -11,7 +11,7 @@
             --violet-1:#667eea; --violet-2:#764ba2; --green-1:#48bb78; --green-2:#38a169; 
             --orange-1:#ed8936; --orange-2:#dd6b20; --teal:#38b2ac; --muted:#666;
             --blue-light: #4299e1;
-            --red-trap: #c53030; /* Assombrissement pour la lisibilité */
+            --red-trap: #c53030;
             --yellow-accent: #f6e05e;
             --border-color: #e2e8f0;
             --completed: #e0f2f1;
@@ -21,28 +21,20 @@
         body {
             font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, var(--green-1) 0%, var(--violet-2) 100%);
-            padding: 20px; min-height: 10vh;
+            padding: 20px; min-height: 100vh;
         }
         .container { max-width: 1400px; margin: 0 auto; background: white; border-radius: 20px; padding: 40px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
         h1 { color: var(--green-1); text-align: center; margin-bottom: 15px; font-size: 2.2em; }
         .subtitle { text-align:center; color:#666; margin-bottom: 35px; font-size: 1.1em; }
         
-        /* --- Instructions CSS (kept but unused) --- */
-        .instructions { background: #f8f9ff; padding: 20px; border-radius: 12px; margin-bottom: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .instructions h3 { color: var(--violet-2); margin-bottom: 15px; font-size: 1.2em; }
-        .instructions ol { padding-left: 20px; list-style-type: decimal; }
-        .instructions li { margin-bottom: 8px; color: var(--ink); line-height: 1.5; font-size: 0.95em; }
-        
-        /* --- D&D Source Area --- */
         .source-area { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-bottom: 30px; }
         .source-column { 
             background:#f8f9ff; padding:20px; border-radius:12px; min-height: 200px; 
             display: flex; flex-direction: column; 
             box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
-        .source-column h3 { color: var(--ink); margin-bottom: 15px; text-align:center; font-size:1.15em; padding-bottom:10px; border-bottom:2px solid var(--border-color); }
+        .source-column h3 { color: #333; margin-bottom: 15px; text-align:center; font-size:1.15em; padding-bottom:10px; border-bottom:2px solid var(--border-color); }
         
-        /* Layout pour les cartes: 2 colonnes pour les Précautions, flex pour les Outils */
         #toolSourceList { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
         #precautionSourceList {
             display: grid;
@@ -51,13 +43,11 @@
             justify-content: flex-start; 
         }
 
-        /* --- Cards --- */
         .card { 
             background:white; padding:12px 15px; border-radius:8px; cursor:grab; 
             box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: all .2s ease; 
             font-size: .95em; 
             border: 2px solid transparent;
-            /* Default max-width for tools */
             max-width: 180px; 
             text-align: center;
         }
@@ -65,12 +55,11 @@
         .card:hover{ transform: translateY(-1px); box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
         .card:active { cursor: grabbing; }
         
-        /* New styles for description/title within source cards */
         .card .card-title {
             font-weight: 700;
             margin-bottom: 5px;
             font-size: 1em;
-            color: var(--ink);
+            color: #333;
         }
         .card .card-desc {
             font-size: 0.8em;
@@ -78,14 +67,20 @@
             color: var(--muted);
             text-align: left;
         }
+        /* Style ajouté pour la note de création de compte */
+        .card .card-note {
+            font-size: 0.75em;
+            font-weight: 600;
+            color: var(--violet-2); /* Utiliser une couleur pour l'accent */
+            margin-top: 5px;
+            line-height: 1.2;
+        }
         
-        /* Adjustment for Precaution cards inside the new grid */
         .card.precaution {
              max-width: none; 
              text-align: left;
         }
         
-        /* Card Types */
         .card.tool{ border-color: var(--green-1); color: var(--green-2); font-weight: 600; }
         .card.tool .card-title { color: var(--green-2); }
         .card.precaution{ border-color: var(--orange-1); }
@@ -93,7 +88,6 @@
         .card.dragging { opacity: 0.5; border: 2px dashed var(--green-1); }
         .card.hidden { display: none; }
         
-        /* --- Task Selection Area (The one the user clicks, not drags) --- */
         .task-area { margin-bottom: 30px; border: 1px solid var(--border-color); border-radius: 12px; padding: 20px; background: #fff; }
         .task-area h3 { color: var(--green-1); margin-bottom: 15px; font-size: 1.3em; }
         .task-list { display: flex; flex-wrap: wrap; gap: 10px; }
@@ -115,7 +109,6 @@
             box-shadow: none;
         }
 
-        /* --- Drop Zone --- */
         .drop-zone-container { 
             display: flex; gap: 20px; margin-bottom: 30px; 
             padding: 20px; background: var(--drop-zone-bg); 
@@ -140,18 +133,15 @@
         .drop-slot.filled { border-style: solid; }
         .dropped-card { margin: 0; width: 100%; max-width: none; cursor: default; }
 
-        /* General UI */
         .action-buttons{ display:flex; gap:12px; justify-content:center; margin-top: 4px; margin-bottom: 30px; }
         .btn{ padding: 12px 26px; border:none; border-radius:999px; font-size:1.02em; font-weight:700; cursor:pointer; transition: all .25s ease; box-shadow: 0 4px 15px rgba(0,0,0,.2); }
         .btn-validate{ background: linear-gradient(135deg, var(--green-1) 0%, var(--green-2) 100%); color:white }
         .btn-reset{ background: linear-gradient(135deg, var(--orange-1) 0%, var(--orange-2) 100%); color:white }
         .btn:hover{ transform: translateY(-1px); box-shadow: 0 6px 22px rgba(0,0,0,.25) }
 
-        /* Progress */
-        .progress{ height:10px; background:#eef2ff; border-radius:999px; overflow:hidden; margin:10px 0 30px; /* Ajout d'une marge pour l'alignement */ }
+        .progress{ height:10px; background:#eef2ff; border-radius:999px; overflow:hidden; margin:10px 0 30px; }
         .bar{ height:100%; width:0%; background: linear-gradient(90deg, var(--green-1), var(--violet-2)); transition: width .3s ease }
         
-        /* Custom Modal */
         #customModal{ position:fixed; inset:0; background:rgba(0,0,0,.6); display:none; justify-content:center; align-items:center; z-index:1000; opacity:0; transition:opacity .25s ease }
         #customModal.show{ display:flex; opacity:1 }
         #modalBox{ background:white; padding:26px; border-radius:12px; box-shadow:0 5px 25px rgba(0,0,0,.5); max-width:92%; width:600px; text-align:center; transform: scale(.92); transition: transform .25s ease; text-align: left; }
@@ -163,7 +153,6 @@
             .source-area { grid-template-columns: 1fr; } 
             .drop-zone-container { flex-direction: column; gap: 10px; }
             .container{ padding:24px }
-            /* Mobile adjustment for precaution list */
             #precautionSourceList { grid-template-columns: 1fr; }
             #modalBox { width: 95%; max-width: none; }
         }
@@ -172,73 +161,80 @@
 <body>
     <div class="container" role="application" aria-label="Jeu d'association tâches / outils IA glisser-déposer">
         <h1>Intelligence Artificielle et applications pédagogiques.</h1>
-        <p class="subtitle">Associez une tâche à l'outil le plus adapté et  à une précaution essentielle.</p>
+        <p class="subtitle">Associez une tâche à l'outil le plus adapté et à une précaution essentielle.</p>
 
-        <!-- L'ancienne div .instructions est maintenant retirée -->
-
-        <!-- Barre de Progression -->
         <div class="progress"><div class="bar" id="progressBar"></div></div>
 
-        <!-- Zone de sélection de la Tâche (Clique simple) -->
         <div class="task-area">
             <h3>📝 Sélectionnez une Tâche</h3>
             <div class="task-list" id="taskList">
-                <!-- Les cartes tâches sont cliquables, pas déplaçables -->
                 <div class="card task" data-type="task" data-id="qcm" tabindex="0">Créer un QCM exportable</div>
                 <div class="card task" data-type="task" data-id="questions" tabindex="0">Générer rapidement des questions pour une évaluation</div>
-                <div class="card task" data-type="task" data-id="versions" tabindex="0">Proposer plusieurs versions d’un exercice</div>
+                <div class="card task" data-type="task" data-id="versions" tabindex="0">Proposer plusieurs versions d'un exercice</div>
                 <div class="card task" data-type="task" data-id="bilan" tabindex="0">Bilan de révision avec explications</div>
                 <div class="card task" data-type="task" data-id="adapter" tabindex="0">Adapter un document dans différents styles</div>
-                <div class="card task" data-type="task" data-id="presentation" tabindex="0">Réaliser la présentation d’un cours (slides, support visuel)</div>
-                <div class="card task" data-type="task" data-id="resume" tabindex="0">Réaliser un résumé audio/vidéo d’un PDF</div>
+                <div class="card task" data-type="task" data-id="presentation" tabindex="0">Réaliser la présentation d'un cours (slides, support visuel)</div>
+                <div class="card task" data-type="task" data-id="resume" tabindex="0">Réaliser un résumé audio/vidéo d'un PDF</div>
                 <div class="card task" data-type="task" data-id="commentaires" tabindex="0">Rédiger des commentaires individualisés</div>
                 <div class="card task" data-type="task" data-id="feedbacks" tabindex="0">Produire des feedbacks</div>
                 <div class="card task" data-type="task" data-id="progression" tabindex="0">Construire une progression de séquence (planification)</div>
-                <div class="card task" data-type="task" data-id="recherche" tabindex="0">Recherches d’information documentées</div>
+                <div class="card task" data-type="task" data-id="recherche" tabindex="0">Recherches d'information documentées</div>
                 <div class="card task" data-type="task" data-id="enigmes" tabindex="0">Créer des énigmes pédagogiques / escape game</div>
                 <div class="card task" data-type="task" data-id="fiche" tabindex="0">Créer une fiche de cours avec images</div>
                 <div class="card task" data-type="task" data-id="pages_web" tabindex="0">Créer des pages web</div>
-                <div class="card task" data-type="task" data-id="recherche_progression" tabindex="0">Recherches pour construire le contenu d’un nouveau cours</div>
+                <div class="card task" data-type="task" data-id="recherche_progression" tabindex="0">Recherches pour construire le contenu d'un nouveau cours</div>
             </div>
         </div>
 
-        <!-- Zone de Dépôt (Drop Zone) -->
         <div class="drop-zone-container">
-            <!-- Emplacement Outil -->
-            <div class="drop-slot tool" id="toolSlot" data-type="tool" ondragover="allowDrop(event)" ondrop="drop(event)">
+            <div class="drop-slot tool" id="toolSlot" data-type="tool" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="dragLeave(event)" ondragenter="dragEnter(event)">
                 <span class="slot-label">Déposez l'Outil ici</span>
             </div>
-            <!-- Emplacement Précaution -->
-            <div class="drop-slot precaution" id="precautionSlot" data-type="precaution" ondragover="allowDrop(event)" ondrop="drop(event)">
+            <div class="drop-slot precaution" id="precautionSlot" data-type="precaution" ondragover="allowDrop(event)" ondrop="drop(event)" ondragleave="dragLeave(event)" ondragenter="dragEnter(event)">
                 <span class="slot-label">Déposez la Précautions ici</span>
             </div>
         </div>
         
-        <!-- Boutons -->
         <div class="action-buttons">
-            <button class="btn btn-validate" id="btnValidate">✓ Valider l'association</button>
+            <button class="btn btn-validate" id="btnValidate" disabled>✓ Valider l'association</button>
             <button class="btn btn-reset" id="btnReset">↻ Recommencer l'exercice</button>
         </div>
 
-        <!-- Aire de Jeu (Source des cartes déplaçables) -->
         <div class="source-area" id="sourceArea">
             
-            <!-- Colonne Outils Source -->
             <div class="source-column" aria-labelledby="col-outils-source">
                 <h3 id="col-outils-source">🤖 Outils IA </h3>
                 <div class="card-list" id="toolSourceList">
-                    <!-- Outils sans description pour rester compact -->
-                    <div class="card tool" data-type="tool" data-id="quizwizard" draggable="true" ondragstart="drag(event)"><div class="card-title">Quiz Wizard</div></div>
-                    <div class="card tool" data-type="tool" data-id="chatgpt_gemini_mistral" draggable="true" ondragstart="drag(event)"><div class="card-title">ChatGPT, Gemini, Claude, Mistral</div></div>
-                    <div class="card tool" data-type="tool" data-id="claude" draggable="true" ondragstart="drag(event)"><div class="card-title">Claude</div></div> 
-                    <div class="card tool" data-type="tool" data-id="perplexity" draggable="true" ondragstart="drag(event)"><div class="card-title">Perplexity</div></div>
-                    <div class="card tool" data-type="tool" data-id="gamma" draggable="true" ondragstart="drag(event)"><div class="card-title">Gamma</div></div> 
-                    <div class="card tool" data-type="tool" data-id="notebooklm" draggable="true" ondragstart="drag(event)"><div class="card-title">NotebookLM</div></div>
-                    <div class="card tool" data-type="tool" data-id="canva" draggable="true" ondragstart="drag(event)"><div class="card-title">Canva</div></div> 
+                    <div class="card tool" data-type="tool" data-id="quizwizard" draggable="true" ondragstart="drag(event)">
+                        <div class="card-title">Quiz Wizard</div>
+                        <div class="card-note">Création de compte</div>
+                    </div>
+                    <div class="card tool" data-type="tool" data-id="chatgpt_gemini_mistral" draggable="true" ondragstart="drag(event)">
+                        <div class="card-title">ChatGPT, Gemini, Claude, Mistral</div>
+                        <div class="card-note">Création de compte</div>
+                    </div>
+                    <div class="card tool" data-type="tool" data-id="claude" draggable="true" ondragstart="drag(event)">
+                        <div class="card-title">Claude</div>
+                        <div class="card-note">Création de compte</div>
+                    </div> 
+                    <div class="card tool" data-type="tool" data-id="perplexity" draggable="true" ondragstart="drag(event)">
+                        <div class="card-title">Perplexity</div>
+                    </div>
+                    <div class="card tool" data-type="tool" data-id="gamma" draggable="true" ondragstart="drag(event)">
+                        <div class="card-title">Gamma</div>
+                        <div class="card-note">Création de compte</div>
+                    </div> 
+                    <div class="card tool" data-type="tool" data-id="notebooklm" draggable="true" ondragstart="drag(event)">
+                        <div class="card-title">NotebookLM</div>
+                        <div class="card-note">Création de compte</div>
+                    </div>
+                    <div class="card tool" data-type="tool" data-id="canva" draggable="true" ondragstart="drag(event)">
+                        <div class="card-title">Canva</div>
+                        <div class="card-note">Création de compte</div>
+                    </div> 
                 </div>
             </div>
 
-            <!-- Colonne Précautions Source (avec deux cartes par ligne) -->
             <div class="source-column" aria-labelledby="col-precautions-source">
                 <h3 id="col-precautions-source">⚠️ Précautions </h3>
                 <div class="card-list" id="precautionSourceList">
@@ -293,7 +289,6 @@
         
     </div>
 
-    <!-- Modal pour notifications simples (erreur/confirmation) -->
     <div id="customModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
         <div id="modalBox">
             <h4 id="modalTitle">Attention !</h4>
@@ -303,14 +298,11 @@
     </div>
 
     <script>
-        // --- CONSTANTE DE SÉCURITÉ GLOBALE ---
         const SECURITY_REMINDER = " <span style='font-weight:700; color:var(--red-trap);'> (Rappel Sécurité/RGPD : Toujours vérifier les conditions d'utilisation et éviter les données personnelles dans ces outils grand public.)</span>";
 
-        // --- DATA MODEL (Associations 1:1:1 basées exactement sur le tableau fourni) ---
-        // La remarque de sécurité est ajoutée directement dans chaque justification d'outil.
+        // --- Données d'Association (Complétées) ---
         const correctAssociations1to1 = {
-            // Tâche ID:          { tool: 'Outil ID', precaution: 'Précaution ID', rationale: { tool: 'Raison Outil', precaution: 'Raison Précaution' } }
-            qcm:                    { 
+            qcm: { 
                 tool: 'quizwizard', 
                 precaution: 'verif_fact_pertinence', 
                 rationale: { 
@@ -318,7 +310,7 @@
                     precaution: 'La vérification de la **pertinence** et de l\'**exactitude** des questions est cruciale pour que l\'outil d\'évaluation soit valide.' 
                 } 
             },
-            questions:              { 
+            questions: { 
                 tool: 'chatgpt_gemini_mistral', 
                 precaution: 'renseignement_contexte', 
                 rationale: { 
@@ -326,7 +318,7 @@
                     precaution: 'Sans indiquer le **niveau, la durée et les compétences visées**, les questions générées seront trop génériques ou inadaptées au public cible.' 
                 } 
             },
-            versions:               { 
+            versions: { 
                 tool: 'chatgpt_gemini_mistral', 
                 precaution: 'intention_pedagogique', 
                 rationale: { 
@@ -334,7 +326,7 @@
                     precaution: 'S\'assurer de l\'**équilibrage des difficultés** et de l\'**alignement avec le programme** est essentiel pour que l\'exercice reste équitable et pertinent.' 
                 } 
             }, 
-            bilan:                  { 
+            bilan: { 
                 tool: 'chatgpt_gemini_mistral', 
                 precaution: 'verif_fact_esprit_critique', 
                 rationale: { 
@@ -342,7 +334,7 @@
                     precaution: 'Il faut **vérifier les faits** et développer l\'**esprit critique** des élèves, notamment en sciences/histoire, pour éviter qu\'ils ne considèrent le contenu IA comme parole d\'évangile.' 
                 } 
             }, 
-            adapter:                { 
+            adapter: { 
                 tool: 'claude', 
                 precaution: 'intention_pedagogique_ton', 
                 rationale: { 
@@ -350,7 +342,7 @@
                     precaution: 'Le changement de style doit servir un **objectif pédagogique** clair et la **vérification factuelle** reste indispensable, quel que soit le ton.' 
                 } 
             },
-            presentation:           { 
+            presentation: { 
                 tool: 'gamma', 
                 precaution: 'intention_pedagogique_surcharge', 
                 rationale: { 
@@ -358,7 +350,7 @@
                     precaution: 'Le risque d\'un outil de présentation est la **surcharge cognitive** (trop de texte, trop d\'images) qui nuit à l\'apprentissage. La modération est clé.' 
                 } 
             },
-            resume:                 { 
+            resume: { 
                 tool: 'notebooklm', 
                 precaution: 'verif_confidentialite', 
                 rationale: { 
@@ -366,7 +358,7 @@
                     precaution: 'Lors de l\'analyse de documents longs (surtout internes), la **confidentialité et le RGPD** sont primordiaux. Il faut s\'assurer qu\'aucun document sensible ne soit transmis.' 
                 } 
             },
-            commentaires:           { 
+            commentaires: { 
                 tool: 'chatgpt_gemini_mistral', 
                 precaution: 'confidentialite_feedback', 
                 rationale: { 
@@ -374,7 +366,7 @@
                     precaution: 'Il est essentiel de respecter le **RGPD/Confidentialité** (pas de noms d\'élèves) et de veiller à ce que le feedback généré soit **constructif et bienveillant**.' 
                 } 
             },
-            feedbacks:              { 
+            feedbacks: { 
                 tool: 'chatgpt_gemini_mistral', 
                 precaution: 'confidentialite_feedback', 
                 rationale: { 
@@ -382,7 +374,7 @@
                     precaution: 'Le **RGPD/Confidentialité** (pas de noms d\'élèves) et la qualité (**constructif et bienveillant**) du feedback sont les précautions les plus critiques ici.' 
                 } 
             },
-            progression:            { 
+            progression: { 
                 tool: 'chatgpt_gemini_mistral', 
                 precaution: 'intention_pedagogique', 
                 rationale: { 
@@ -390,7 +382,7 @@
                     precaution: 'Toute planification doit veiller à l\'**équilibrage des difficultés** des séquences et à l\'**alignement avec le programme** officiel pour garantir la qualité de l\'enseignement.' 
                 } 
             },
-            recherche:              { 
+            recherche: { 
                 tool: 'perplexity', 
                 precaution: 'verif_croiser_sources', 
                 rationale: { 
@@ -398,7 +390,7 @@
                     precaution: 'Le risque d\'une recherche unique est le biais ou l\'hallucination. Il faut **croiser les sources** et développer l\'**esprit critique** des élèves.' 
                 } 
             },
-            enigmes:                { 
+            enigmes: { 
                 tool: 'claude', 
                 precaution: 'intention_biais', 
                 rationale: { 
@@ -406,7 +398,7 @@
                     precaution: 'Les énigmes et jeux exigent un **objectif d\'apprentissage clair** et doivent être purgés de tout **biais culturel ou stéréotype** involontairement intégré par l\'IA.' 
                 } 
             },
-            fiche:                  { 
+            fiche: { 
                 tool: 'canva', 
                 precaution: 'verif_fact_seule', 
                 rationale: { 
@@ -414,7 +406,7 @@
                     precaution: 'Dans une fiche de cours (support d\'autorité), la **vérification factuelle** seule est primordiale car les élèves ne remettront pas en cause le contenu du document.' 
                 } 
             },
-            pages_web:              { 
+            pages_web: { 
                 tool: 'claude', 
                 precaution: 'verif_fact_seule', 
                 rationale: { 
@@ -422,406 +414,329 @@
                     precaution: 'Comme pour la fiche, la page web est un support de référence : la **vérification factuelle** pour l\'exactitude des données est l\'unique précaution la plus essentielle.' 
                 } 
             }, 
-            recherche_progression:  { 
+            recherche_progression: { 
                 tool: 'claude', 
                 precaution: 'verif_fact_seule', 
                 rationale: { 
                     tool: 'Pour construire un nouveau cours (souvent basé sur un grand nombre de ressources et d\'objectifs), Claude est privilégié pour sa capacité à gérer de **longues conversations et tâches complexes**.' + SECURITY_REMINDER, 
                     precaution: 'Comme le contenu du cours est nouveau, la **vérification factuelle** pour l\'exactitude des données est l\'unique précaution la plus essentielle.' 
                 } 
-            }, 
-        };
-        
-        // --- GLOBAL STATE ---
-        const ALL_TASK_IDS = Object.keys(correctAssociations1to1);
-        let selectedTask = null;
-        let droppedTool = null;
-        let droppedPrecaution = null;
-        let completedCount = 0; // Nombre de validations réussies
-
-        // --- DOM Elements ---
-        const elements = {
-            taskList: document.getElementById('taskList'),
-            toolSlot: document.getElementById('toolSlot'),
-            precautionSlot: document.getElementById('precautionSlot'),
-            toolSourceList: document.getElementById('toolSourceList'),
-            precautionSourceList: document.getElementById('precautionSourceList'),
-            btnValidate: document.getElementById('btnValidate'),
-            btnReset: document.getElementById('btnReset'),
-            progressBar: document.getElementById('progressBar'),
-            customModal: document.getElementById('customModal'),
-            modalTitle: document.getElementById('modalTitle'),
-            modalMessage: document.getElementById('modalMessage'),
-            btnCloseModal: document.getElementById('btnCloseModal'),
-        };
-
-        // Stocker une référence de toutes les cartes (pour le reset et le titre)
-        const allCards = Array.from(document.querySelectorAll('.card')).map(card => {
-            let titleText;
-            if (card.querySelector('.card-title')) {
-                titleText = card.querySelector('.card-title').textContent.trim();
-            } else {
-                titleText = card.textContent.trim(); // Pour les cartes tâches
             }
-            return {
-                id: card.dataset.id,
-                type: card.dataset.type,
-                title: titleText,
-                element: card
-            };
-        });
+        };
 
-        /** Fonction utilitaire pour obtenir le titre d'une carte par ID. */
-        function getCardTitle(id) {
-            return allCards.find(c => c.id === id)?.title || id;
+        // --- Variables d'état ---
+        let selectedTask = null;
+        let droppedToolId = null;
+        let droppedPrecautionId = null;
+        let completedTasks = new Set();
+        const totalTasks = Object.keys(correctAssociations1to1).length;
+
+        // --- Éléments du DOM ---
+        const taskList = document.getElementById('taskList');
+        const toolSlot = document.getElementById('toolSlot');
+        const precautionSlot = document.getElementById('precautionSlot');
+        const btnValidate = document.getElementById('btnValidate');
+        const btnReset = document.getElementById('btnReset');
+        const progressBar = document.getElementById('progressBar');
+        const customModal = document.getElementById('customModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalMessage = document.getElementById('modalMessage');
+        const btnCloseModal = document.getElementById('btnCloseModal');
+
+        // --- Fonctions utilitaires ---
+
+        function updateProgress() {
+            const percentage = (completedTasks.size / totalTasks) * 100;
+            progressBar.style.width = `${percentage}%`;
+            if (completedTasks.size === totalTasks) {
+                showModal('🎉 Félicitations !', 'Vous avez réussi à associer correctement toutes les tâches, outils et précautions. Vous êtes prêt(e) à intégrer l\'IA dans votre pédagogie !', true);
+            }
         }
 
-        // --- UTILS ---
+        function showModal(title, message, isSuccess = false) {
+            modalTitle.textContent = title;
+            modalMessage.innerHTML = message;
+            
+            modalTitle.style.color = isSuccess ? 'var(--green-1)' : 'var(--red-trap)';
+            btnCloseModal.className = isSuccess ? 'btn btn-validate' : 'btn btn-reset';
 
-        function showModal(title, message, confirmText = 'Compris') {
-            elements.modalTitle.textContent = title;
-            elements.modalMessage.innerHTML = message; // Utiliser innerHTML pour permettre le **gras** et le style du rappel sécurité
-            elements.btnCloseModal.textContent = confirmText; 
-            elements.customModal.classList.add('show');
-            elements.modalBox.focus(); 
+            customModal.classList.add('show');
+            document.getElementById('modalBox').focus();
         }
 
         function closeModal() {
-            elements.customModal.classList.remove('show');
-        }
-
-        function updateProgress() {
-            const progress = (completedCount / ALL_TASK_IDS.length) * 100;
-            elements.progressBar.style.width = `${progress}%`;
-
-            if (completedCount === ALL_TASK_IDS.length) {
-                showModal('Exercice Terminé !', 'Félicitations ! Vous avez validé toutes les associations 1:1:1.', 'Parfait');
-            }
+            customModal.classList.remove('show');
         }
         
-        // --- DRAG & DROP LOGIC ---
+        // --- Gestion des Slots (Zone de Dépôt) ---
 
-        function allowDrop(ev) {
-            ev.preventDefault();
-            // Ajoute une classe visuelle pour indiquer que c'est une zone de dépôt valide
-            ev.currentTarget.classList.add('drag-over');
-        }
-        
-        function dragLeave(ev) {
-            // Retire la classe visuelle quand la carte quitte la zone
-            ev.currentTarget.classList.remove('drag-over');
-        }
+        function resetDropZones() {
+            toolSlot.innerHTML = `<span class="slot-label">Déposez l'Outil ici</span>`;
+            toolSlot.classList.remove('filled');
+            toolSlot.removeAttribute('data-id');
+            droppedToolId = null;
 
-        function drag(ev) {
-            // Empêche le glisser si aucune tâche n'est sélectionnée
-            if (!selectedTask) {
-                ev.preventDefault();
-                showModal('Sélection requise', 'Veuillez d\'abord **sélectionner une Tâche enseignante** avant de glisser-déposer un outil ou une précaution.');
-                return;
-            }
-            // Définit le type et l'ID de la carte glissée
-            ev.dataTransfer.setData("card-id", ev.target.dataset.id);
-            ev.dataTransfer.setData("card-type", ev.target.dataset.type);
-            ev.target.classList.add('dragging');
+            precautionSlot.innerHTML = `<span class="slot-label">Déposez la Précautions ici</span>`;
+            precautionSlot.classList.remove('filled');
+            precautionSlot.removeAttribute('data-id');
+            droppedPrecautionId = null;
+
+            // Rendre visibles toutes les cartes sources
+            document.querySelectorAll('.card.hidden').forEach(card => card.classList.remove('hidden'));
+
+            btnValidate.disabled = true;
         }
 
-        function dragEnd(ev) {
-            ev.target.classList.remove('dragging');
-        }
-        
-
-        function drop(ev) {
-            ev.preventDefault();
-            const slot = ev.currentTarget;
-            slot.classList.remove('drag-over');
-
-            const draggedId = ev.dataTransfer.getData("card-id");
-            const draggedType = ev.dataTransfer.getData("card-type");
-            const slotType = slot.dataset.type;
-
-            // 1. Vérification du type (Outil dans Outil, Précaution dans Précaution)
-            if (draggedType !== slotType) {
-                showModal('Erreur de dépôt', `Vous ne pouvez déposer qu'une carte de type "**${slotType === 'tool' ? 'Outil' : 'Précautions'}**" dans cet emplacement.`);
-                return;
-            }
-
-            // 2. Récupérer et remettre l'ancienne carte si l'emplacement était déjà rempli
-            let oldCardInSlot = slot.querySelector('.dropped-card');
-            if (oldCardInSlot) {
-                // On utilise l'ID et le type de la carte d'origine stockés dans la data-attributs du clone
-                resetDroppedCard(oldCardInSlot.dataset.id, oldCardInSlot.dataset.type); 
-                clearSlot(slot); 
-            }
-            
-            // 3. Mettre à jour l'état et l'affichage de l'emplacement
-            const newCardElement = document.querySelector(`.card[data-id="${draggedId}"][data-type="${draggedType}"]`);
-            
-            // Mettre à jour l'état global
-            if (slotType === 'tool') {
-                droppedTool = draggedId;
-            } else {
-                droppedPrecaution = draggedId;
-            }
-
-            // Mettre à jour l'affichage de la source (carte invisible)
-            newCardElement.classList.add('hidden');
-            
-            // Nettoyer et placer la nouvelle carte dans l'emplacement de dépôt
-            const newCardClone = newCardElement.cloneNode(true);
-            
-            slot.appendChild(newCardClone);
-            newCardClone.classList.remove('hidden');
-            newCardClone.classList.add('dropped-card');
-            newCardClone.draggable = false; 
-            newCardClone.style.maxWidth = '100%'; // S'assurer qu'elle prend toute la place
-            
-            // Cacher la description pour la compacité dans le slot et styler le titre
-            if (newCardClone.querySelector('.card-desc')) {
-                newCardClone.querySelector('.card-desc').style.display = 'none';
-            }
-            
-            // Styliser l'apparence de la carte dans le slot
-            const cardTitleElement = newCardClone.querySelector('.card-title') || newCardClone;
-
-            if (draggedType === 'tool') {
-                cardTitleElement.style.color = 'white';
-                newCardClone.style.backgroundColor = 'var(--green-1)';
-                newCardClone.style.borderColor = 'var(--green-2)';
-            } else if (draggedType === 'precaution') {
-                cardTitleElement.style.color = 'white';
-                newCardClone.style.backgroundColor = 'var(--orange-1)';
-                newCardClone.style.borderColor = 'var(--orange-2)';
-            }
-
-            slot.classList.add('filled');
-            
-            // Ajouter le bouton de retrait rapide dans le slot
-            const removeBtn = document.createElement('button');
-            removeBtn.textContent = 'X';
-            removeBtn.style.cssText = 'position:absolute; top:5px; right:5px; background:var(--red-trap); color:white; border:none; border-radius:50%; width:20px; height:20px; font-size:12px; cursor:pointer; z-index:10;';
-            removeBtn.onclick = (e) => {
-                e.stopPropagation();
-                // On utilise les data-attributs du clone pour savoir quelle carte remettre à la source
-                resetDroppedCard(newCardClone.dataset.id, newCardClone.dataset.type); 
-                clearSlot(slot);
-            };
-            slot.appendChild(removeBtn);
+        function updateValidationButton() {
+             btnValidate.disabled = !(selectedTask && droppedToolId && droppedPrecautionId);
         }
 
-        /** Réinitialise visuellement et logiquement une carte de l'emplacement de dépôt à la source. */
-        function resetDroppedCard(id, type) {
-            const originalCard = document.querySelector(`.card[data-id="${id}"][data-type="${type}"]`);
-            if (originalCard) {
-                originalCard.classList.remove('hidden');
-            }
+        function placeCardInSlot(slotElement, cardElement) {
+            // Vider l'ancien contenu du slot
+            slotElement.innerHTML = '';
+            
+            // Cloner et styliser la carte
+            const clone = cardElement.cloneNode(true);
+            clone.classList.remove('dragging', 'hidden');
+            clone.classList.add('dropped-card');
+            clone.draggable = false;
+            
+            // Attacher au slot
+            slotElement.appendChild(clone);
+            slotElement.classList.add('filled');
+            slotElement.setAttribute('data-id', cardElement.dataset.id);
+
+            // Mettre à jour l'état
+            const type = slotElement.dataset.type;
             if (type === 'tool') {
-                droppedTool = null;
-            } else {
-                droppedPrecaution = null;
-            }
-        }
-        
-        /** Nettoie visuellement l'emplacement de dépôt. */
-        function clearSlot(slot) {
-            const slotType = slot.dataset.type;
-            slot.innerHTML = `<span class="slot-label">Déposez ${slotType === 'tool' ? 'l\'Outil' : 'la Précautions'} ici</span>`;
-            slot.classList.remove('filled');
-        }
-
-        // --- TASK SELECTION LOGIC ---
-
-        function selectTask(card) {
-            if (card.classList.contains('completed')) return;
-
-            const newTaskId = card.dataset.id;
-
-            // 1. Désélectionner l'ancienne tâche visuellement
-            if (selectedTask) {
-                document.querySelector(`.card.task[data-id="${selectedTask}"]`)?.classList.remove('selected');
+                droppedToolId = cardElement.dataset.id;
+            } else if (type === 'precaution') {
+                droppedPrecautionId = cardElement.dataset.id;
             }
 
-            // 2. Mettre à jour la sélection
-            selectedTask = newTaskId;
-            card.classList.add('selected');
+            // Cacher la carte originale (source)
+            cardElement.classList.add('hidden');
 
-            // 3. Réinitialiser la zone de dépôt (les cartes de la source redeviennent visibles)
-            resetDropZoneAndSource(false);
+            updateValidationButton();
         }
 
-        // --- VALIDATION LOGIC ---
+        // --- Fonctions de Drag & Drop ---
 
-        function validateAssociation() {
+        function drag(event) {
             if (!selectedTask) {
-                showModal('Sélection incomplète', 'Veuillez **sélectionner une Tâche** enseignante.');
+                event.preventDefault();
+                showModal('Sélection requise', 'Veuillez d\'abord **sélectionner une Tâche** dans la liste avant de glisser-déposer un outil ou une précaution.');
                 return;
             }
-            if (!droppedTool || !droppedPrecaution) {
-                showModal('Sélection incomplète', 'Veuillez glisser-déposer **un Outil et une Précautions** dans leurs emplacements.');
-                return;
+            // Définir les données transférées : ID de la carte et type
+            event.dataTransfer.setData("text/plain", event.target.dataset.id);
+            event.dataTransfer.setData("text/type", event.target.dataset.type);
+            event.target.classList.add('dragging');
+
+            // Cacher la carte originale dans le slot si elle existe
+            const sourceId = event.target.dataset.id;
+            let currentSlot = null;
+            if (event.target.dataset.type === 'tool' && toolSlot.getAttribute('data-id') === sourceId) {
+                currentSlot = toolSlot;
+            } else if (event.target.dataset.type === 'precaution' && precautionSlot.getAttribute('data-id') === sourceId) {
+                currentSlot = precautionSlot;
             }
-
-            const expected = correctAssociations1to1[selectedTask];
-            
-            // 1. Validation 1:1:1
-            const isToolCorrect = droppedTool === expected.tool;
-            const isPrecautionCorrect = droppedPrecaution === expected.precaution;
-            
-            if (isToolCorrect && isPrecautionCorrect) {
-                // Succès
-                
-                // 1. Marquer la tâche comme complétée
-                const taskCard = document.querySelector(`.card.task[data-id="${selectedTask}"]`);
-                taskCard.classList.add('completed');
-                taskCard.classList.remove('selected');
-
-                // 2. Incrémenter le compteur de succès
-                completedCount++;
-
-                // 3. Réinitialiser la zone de dépôt pour la prochaine tâche
-                resetDropZoneAndSource(true); // Passer 'true' pour cacher définitivement les cartes utilisées
-
-                showModal('Validation réussie !', `L'association pour la tâche **${getCardTitle(selectedTask)}** est correcte.`, 'Continuer');
-
-                // 4. Réinitialiser l'état global et l'affichage
-                selectedTask = null;
-                updateProgress();
-
-            } else {
-                // Échec - Fournir un feedback détaillé et justifié
-                const taskTitle = getCardTitle(selectedTask);
-
-                let title = 'Association incorrecte';
-                let message = `L'association pour la tâche **${taskTitle}** est incomplète ou incorrecte.`;
-
-                if (!isToolCorrect) {
-                    // L'outil est faux
-                    const expectedToolTitle = getCardTitle(expected.tool);
-                    message += `<br><br>🚨 **Outil incorrect :** L'outil principal sélectionné n'est pas le plus pertinent.`;
-                    message += `<br>✅ **Outil attendu :** <span style="font-weight:700; color:var(--green-2);">${expectedToolTitle}</span>.`;
-                    message += `<br>➡️ **Justification :** ${expected.rationale.tool}`;
-                }
-
-                if (!isPrecautionCorrect) {
-                    // La précaution est fausse
-                    const expectedPrecautionCard = allCards.find(c => c.id === expected.precaution);
-                    const expectedPrecautionTitle = expectedPrecautionCard.title;
-                    
-                    message += `<br><br>🚨 **Précautions incorrecte :** La précaution choisie n'est pas la plus essentielle.`;
-                    message += `<br>✅ **Précautions attendue :** <span style="font-weight:700; color:var(--orange-2);">${expectedPrecautionTitle}</span>.`;
-                    message += `<br>➡️ **Justification :** ${expected.rationale.precaution}`;
-                }
-                
-                showModal(title, message, 'Réessayer');
-                
-                // Remettre les cartes dans la source
-                resetDropZoneAndSource(false);
+            if (currentSlot) {
+                currentSlot.innerHTML = `<span class="slot-label">Déposez ${currentSlot.dataset.type === 'tool' ? 'l\'Outil' : 'la Précautions'} ici</span>`;
+                currentSlot.classList.remove('filled');
+                currentSlot.removeAttribute('data-id');
             }
         }
-        
-        /** Réinitialise la zone de dépôt et gère le retour des cartes à la source. */
-        function resetDropZoneAndSource(isFinalValidation = false) {
-            
-            const resetSlot = (slot) => {
-                const cardElement = slot.querySelector('.dropped-card');
-                if (cardElement) {
-                    const id = cardElement.dataset.id;
-                    const type = cardElement.dataset.type;
 
-                    if (!isFinalValidation) {
-                        // Si c'est juste un échec de validation, on remet la carte à la source (visible)
-                        const originalCard = document.querySelector(`.card[data-id="${id}"][data-type="${type}"]`);
-                        if (originalCard) originalCard.classList.remove('hidden');
+        window.drag = drag; // Exposer à l'HTML
+
+        function allowDrop(event) {
+            event.preventDefault(); // Autorise le drop
+        }
+        
+        window.allowDrop = allowDrop; // Exposer à l'HTML
+
+        function dragEnter(event) {
+            event.preventDefault();
+            const type = event.dataTransfer.getData("text/type") || event.target.dataset.type;
+            if (event.target.classList.contains('drop-slot') && event.target.dataset.type === type) {
+                event.target.classList.add('drag-over');
+            }
+        }
+
+        window.dragEnter = dragEnter; // Exposer à l'HTML
+
+        function dragLeave(event) {
+            if (event.target.classList.contains('drop-slot')) {
+                event.target.classList.remove('drag-over');
+            }
+        }
+
+        window.dragLeave = dragLeave; // Exposer à l'HTML
+
+        function drop(event) {
+            event.preventDefault();
+            const droppedId = event.dataTransfer.getData("text/plain");
+            const droppedType = event.dataTransfer.getData("text/type");
+            const dropTarget = event.target.closest('.drop-slot');
+            const sourceCard = document.querySelector(`.card[data-id="${droppedId}"][data-type="${droppedType}"]`);
+
+            if (!dropTarget || dropTarget.dataset.type !== droppedType || !sourceCard) {
+                showModal('Erreur de dépôt', 'Veuillez déposer l\'élément dans la zone de dépôt correspondante (Outil dans Outil, Précaution dans Précaution).');
+                sourceCard.classList.remove('dragging');
+                return;
+            }
+
+            // Réinitialiser l'ancien état si une carte est déjà dans le slot
+            if (dropTarget.classList.contains('filled')) {
+                const oldCardId = dropTarget.getAttribute('data-id');
+                const oldCard = document.querySelector(`.card[data-id="${oldCardId}"][data-type="${droppedType}"]`);
+                if (oldCard) {
+                    oldCard.classList.remove('hidden');
+                }
+            }
+
+            placeCardInSlot(dropTarget, sourceCard);
+            sourceCard.classList.remove('dragging');
+            dropTarget.classList.remove('drag-over');
+        }
+        
+        window.drop = drop; // Exposer à l'HTML
+
+        // --- Gestion de la Tâche (Sélection) ---
+
+        function selectTask(taskElement) {
+            // Si la tâche est déjà complétée, on ignore
+            if (taskElement.classList.contains('completed')) return;
+
+            // Désélectionner la tâche précédente
+            document.querySelectorAll('.card.task.selected').forEach(card => card.classList.remove('selected'));
+            
+            // Sélectionner la nouvelle tâche
+            taskElement.classList.add('selected');
+            selectedTask = taskElement.dataset.id;
+
+            // Réinitialiser les zones de dépôt pour la nouvelle association
+            resetDropZones();
+        }
+
+        // --- Gestionnaire d'Événements ---
+
+        function initEventListeners() {
+            // 1. Sélection de tâche
+            document.querySelectorAll('.card.task').forEach(task => {
+                task.addEventListener('click', () => selectTask(task));
+                task.addEventListener('keyup', (event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        selectTask(task);
                     }
-                }
-                clearSlot(slot);
-            };
-
-            // Réinitialiser les slots et les cartes de retour
-            resetSlot(elements.toolSlot);
-            resetSlot(elements.precautionSlot);
-
-            // Réinitialiser l'état local des cartes glissées
-            droppedTool = null;
-            droppedPrecaution = null;
-            
-            // Nettoyer la sélection de tâche si la validation était réussie
-            if (isFinalValidation) {
-                document.querySelectorAll('.card.task.selected').forEach(card => card.classList.remove('selected'));
-            }
-        }
-        
-        /** Réinitialisation complète de l'exercice. */
-        function resetFullExercise() {
-            // Réinitialiser l'état global
-            selectedTask = null;
-            completedCount = 0;
-            
-            // Réinitialiser les cartes
-            document.querySelectorAll('.card').forEach(card => {
-                card.classList.remove('selected');
-                card.classList.remove('completed');
-                card.classList.remove('hidden');
-            });
-            
-            // Réinitialiser la zone de dépôt et les cartes qui y étaient
-            resetDropZoneAndSource(false);
-
-            // Mettre à jour l'interface
-            updateProgress();
-            
-        }
-
-
-        // --- INITIALISATION ---
-
-        window.onload = () => {
-            // Configurer les écouteurs pour les cartes de Tâche (clic simple)
-            elements.taskList.addEventListener('click', (e) => {
-                const card = e.target.closest('.card.task');
-                if (card) {
-                    selectTask(card);
-                }
+                });
             });
 
-            // Configurer les écouteurs pour les boutons
-            elements.btnValidate.addEventListener('click', validateAssociation);
-            elements.btnReset.addEventListener('click', () => {
-                showModal('Confirmation', 'Voulez-vous vraiment recommencer l\'exercice et effacer votre progression ?', 'Confirmer la réinitialisation');
-            });
+            // 2. Validation
+            btnValidate.addEventListener('click', validateAssociation);
 
-            // Configurer les écouteurs du Drag & Drop pour les slots
-            const slots = [elements.precautionSlot, elements.toolSlot];
-            slots.forEach(slot => {
-                slot.addEventListener('dragenter', allowDrop);
-                slot.addEventListener('dragleave', dragLeave);
-                slot.addEventListener('drop', drop);
-            });
-            
+            // 3. Réinitialisation
+            btnReset.addEventListener('click', resetGame);
 
-            // Configurer les écouteurs sur les cartes sources pour la fin du drag
-            document.querySelectorAll('.card[draggable="true"]').forEach(card => {
-                card.addEventListener('dragend', dragEnd);
-            });
-            
-            // Écouteur du Modal (pour gérer le reset)
-            elements.btnCloseModal.addEventListener('click', () => {
-                // Si le titre du modal est 'Confirmation', c'est qu'on a cliqué sur le bouton de réinitialisation
-                if(elements.modalTitle.textContent === 'Confirmation') {
-                    resetFullExercise(); 
-                }
-                closeModal();
-            });
-            elements.customModal.addEventListener('click', (e) => {
-                // Fermer le modal si on clique en dehors de la boîte
-                if (e.target.id === 'customModal') {
+            // 4. Fermeture de la modale
+            btnCloseModal.addEventListener('click', closeModal);
+            customModal.addEventListener('click', (e) => {
+                if (e.target === customModal) {
                     closeModal();
                 }
             });
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && customModal.classList.contains('show')) {
+                    closeModal();
+                }
+            });
+            
+            // 5. Gestionnaire de fin de glissement pour réinitialiser la classe "dragging"
+            document.querySelectorAll('.card[draggable="true"]').forEach(card => {
+                card.addEventListener('dragend', (event) => {
+                    event.target.classList.remove('dragging');
+                    document.querySelectorAll('.drop-slot').forEach(slot => slot.classList.remove('drag-over'));
+                });
+            });
+        }
 
-            // Lancement initial
-            resetFullExercise();
-        };
+        // --- Logique de Jeu ---
 
+        function validateAssociation() {
+            if (!selectedTask || !droppedToolId || !droppedPrecautionId) {
+                showModal('Erreur', 'Veuillez sélectionner une Tâche et déposer un Outil et une Précautions.');
+                return;
+            }
+
+            const correct = correctAssociations1to1[selectedTask];
+            const isToolCorrect = droppedToolId === correct.tool;
+            const isPrecautionCorrect = droppedPrecautionId === correct.precaution;
+            
+            let feedbackTitle = '';
+            let feedbackMessage = '<h3>Association incorrecte ! Voici les éléments à revoir :</h3>';
+
+            if (isToolCorrect && isPrecautionCorrect) {
+                // Succès
+                feedbackTitle = '✅ Association Correcte !';
+                feedbackMessage = `
+                    <h3>Tâche réussie !</h3>
+                    <p><strong>Outil :</strong> ${correct.rationale.tool}</p>
+                    <p><strong>Précautions :</strong> ${correct.rationale.precaution}</p>
+                `;
+                
+                // Mettre à jour l'état
+                completedTasks.add(selectedTask);
+                document.querySelector(`.card.task[data-id="${selectedTask}"]`).classList.add('completed');
+                
+                // Réinitialiser pour le prochain tour
+                selectedTask = null;
+                document.querySelectorAll('.card.task.selected').forEach(card => card.classList.remove('selected'));
+                resetDropZones();
+
+            } else {
+                // Échec
+                feedbackTitle = '❌ Erreur d\'Association';
+                
+                if (!isToolCorrect) {
+                    const expectedTool = document.querySelector(`.card.tool[data-id="${correct.tool}"] .card-title`).textContent;
+                    feedbackMessage += `<p style="margin-top:10px;"><strong>🤖 Outil :</strong> L'outil sélectionné est incorrect. L'outil le plus adapté est **${expectedTool}**. <br/>*Raison :* ${correct.rationale.tool}</p>`;
+                } else {
+                    feedbackMessage += `<p style="margin-top:10px; color:var(--green-2);"><strong>✅ Outil :</strong> Outil correct (${document.querySelector(`.card.tool[data-id="${droppedToolId}"] .card-title`).textContent}).</p>`;
+                }
+
+                if (!isPrecautionCorrect) {
+                    const expectedPrecaution = document.querySelector(`.card.precaution[data-id="${correct.precaution}"] .card-title`).textContent;
+                    feedbackMessage += `<p style="margin-top:10px;"><strong>⚠️ Précautions :</strong> La précaution sélectionnée est incorrecte. La précaution essentielle est **${expectedPrecaution}**. <br/>*Raison :* ${correct.rationale.precaution}</p>`;
+                } else {
+                    feedbackMessage += `<p style="margin-top:10px; color:var(--green-2);"><strong>✅ Précautions :</strong> Précautions correctes (${document.querySelector(`.card.precaution[data-id="${droppedPrecautionId}"] .card-title`).textContent}).</p>`;
+                }
+            }
+
+            showModal(feedbackTitle, feedbackMessage, isToolCorrect && isPrecautionCorrect);
+            updateProgress();
+            
+            // Après échec, on réinitialise les drop zones
+            if (!(isToolCorrect && isPrecautionCorrect)) {
+                 resetDropZones();
+            }
+        }
+
+        function resetGame() {
+            completedTasks.clear();
+            updateProgress();
+            resetDropZones();
+            selectedTask = null;
+            document.querySelectorAll('.card.task').forEach(card => {
+                card.classList.remove('completed', 'selected');
+            });
+            showModal('Jeu Réinitialisé', 'L\'exercice a été complètement réinitialisé. Bonne chance pour le recommencer !', true);
+        }
+
+        // --- Initialisation ---
+
+        window.onload = initEventListeners;
+        // La première initialisation de la progression n'est pas nécessaire car elle est déjà à 0%
     </script>
 </body>
 </html>

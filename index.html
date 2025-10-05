@@ -307,7 +307,7 @@
                 precaution: 'verif_fact_pertinence', 
                 rationale: { 
                     tool: 'Quiz Wizard est spécialisé dans la création de QCMs directement exportables (LMS, Moodle, etc.), ce qui est son usage principal.' + SECURITY_REMINDER, 
-                    precaution: 'La vérification de la **pertinence** et de l\'**exactitude** des questions est cruciale pour que l\'outil d\'évaluation soit valide.' 
+                    precaution: 'La vérification de la pertinence et de l'exactitude des questions est cruciale pour que l\'outil d\'évaluation soit valide.' 
                 } 
             },
             questions: { 
@@ -315,7 +315,7 @@
                 precaution: 'renseignement_contexte', 
                 rationale: { 
                     tool: 'Les LLMs généralistes (GPT, Gemini...) sont les meilleurs pour la génération rapide de contenu à partir d\'un prompt simple, idéal pour des questions d\'évaluation immédiates.' + SECURITY_REMINDER, 
-                    precaution: 'Sans indiquer le **niveau, la durée et les compétences visées**, les questions générées seront trop génériques ou inadaptées au public cible.' 
+                    precaution: 'Sans indiquer le niveau, la durée et les compétences visées, les questions générées seront trop génériques ou inadaptées au public cible.' 
                 } 
             },
             versions: { 
@@ -323,7 +323,7 @@
                 precaution: 'intention_pedagogique', 
                 rationale: { 
                     tool: 'Les LLMs généralistes sont excellents pour paraphraser et réécrire des textes selon des contraintes spécifiques (ex: 3 versions de difficulté différente).' + SECURITY_REMINDER, 
-                    precaution: 'S\'assurer de l\'**équilibrage des difficultés** et de l\'**alignement avec le programme** est essentiel pour que l\'exercice reste équitable et pertinent.' 
+                    precaution: 'S\'assurer de l'équilibrage des difficultés et de l'alignement avec le programme est essentiel pour que l\'exercice reste équitable et pertinent.' 
                 } 
             }, 
             bilan: { 
@@ -331,7 +331,7 @@
                 precaution: 'verif_fact_esprit_critique', 
                 rationale: { 
                     tool: 'Les LLMs généralistes peuvent synthétiser de larges corpus et fournir des explications détaillées, parfait pour un bilan de révision.' + SECURITY_REMINDER, 
-                    precaution: 'Il faut **vérifier les faits** et développer l\'**esprit critique** des élèves, notamment en sciences/histoire, pour éviter qu\'ils ne considèrent le contenu IA comme parole d\'évangile.' 
+                    precaution: 'Il faut vérifier les faits et développer l'esprit critique des élèves, notamment en sciences/histoire, pour éviter qu\'ils ne considèrent le contenu IA comme parole d\'évangile.' 
                 } 
             }, 
             adapter: { 
@@ -339,7 +339,7 @@
                 precaution: 'intention_pedagogique_ton', 
                 rationale: { 
                     tool: 'Claude (Anthropic) est souvent considéré comme plus performant dans la gestion de la longueur et du ton, idéal pour les exercices stylistiques ou les adaptations didactiques.' + SECURITY_REMINDER, 
-                    precaution: 'Le changement de style doit servir un **objectif pédagogique** clair et la **vérification factuelle** reste indispensable, quel que soit le ton.' 
+                    precaution: 'Le changement de style doit servir un objectif pédagogique clair et la vérification factuelle reste indispensable, quel que soit le ton.' 
                 } 
             },
             presentation: { 
@@ -347,7 +347,7 @@
                 precaution: 'intention_pedagogique_surcharge', 
                 rationale: { 
                     tool: 'Gamma est spécifiquement conçu pour générer des présentations (slides) de manière semi-automatique à partir de texte.' + SECURITY_REMINDER, 
-                    precaution: 'Le risque d\'un outil de présentation est la **surcharge cognitive** (trop de texte, trop d\'images) qui nuit à l\'apprentissage. La modération est clé.' 
+                    precaution: 'Le risque d\'un outil de présentation est la surcharge cognitive (trop de texte, trop d\'images) qui nuit à l\'apprentissage. La modération est clé.' 
                 } 
             },
             resume: { 
@@ -355,7 +355,7 @@
                 precaution: 'verif_confidentialite', 
                 rationale: { 
                     tool: 'NotebookLM est conçu pour analyser de grands documents PDF (sources) et en tirer des synthèses, y compris audio/vidéo (beta), tout en protégeant les données.' + SECURITY_REMINDER, 
-                    precaution: 'Lors de l\'analyse de documents longs (surtout internes), la **confidentialité et le RGPD** sont primordiaux. Il faut s\'assurer qu\'aucun document sensible ne soit transmis.' 
+                    precaution: 'Lors de l\'analyse de documents longs (surtout internes), la confidentialité et le RGPD sont primordiaux. Il faut s\'assurer qu\'aucun document sensible ne soit transmis.' 
                 } 
             },
             commentaires: { 
@@ -363,7 +363,7 @@
                 precaution: 'confidentialite_feedback', 
                 rationale: { 
                     tool: 'Les LLMs généralistes sont très efficaces pour générer des variations de texte (commentaires) à partir de notes, en assurant un ton cohérent.' + SECURITY_REMINDER, 
-                    precaution: 'Il est essentiel de respecter le **RGPD/Confidentialité** (pas de noms d\'élèves) et de veiller à ce que le feedback généré soit **constructif et bienveillant**.' 
+                    precaution: 'Il est essentiel de respecter le RGPD/Confidentialité (pas de noms d\'élèves) et de veiller à ce que le feedback généré soit constructif et bienveillant.' 
                 } 
             },
             feedbacks: { 
@@ -371,7 +371,7 @@
                 precaution: 'confidentialite_feedback', 
                 rationale: { 
                     tool: 'Même raison que pour les commentaires: les LLMs généralistes sont parfaits pour la génération de texte varié et personnalisé basé sur des critères.' + SECURITY_REMINDER, 
-                    precaution: 'Le **RGPD/Confidentialité** (pas de noms d\'élèves) et la qualité (**constructif et bienveillant**) du feedback sont les précautions les plus critiques ici.' 
+                    precaution: 'Le RGPD/Confidentialité (pas de noms d\'élèves) et la qualité (constructif et bienveillant) du feedback sont les précautions les plus critiques ici.' 
                 } 
             },
             progression: { 
@@ -379,15 +379,15 @@
                 precaution: 'intention_pedagogique', 
                 rationale: { 
                     tool: 'Les LLMs généralistes peuvent créer des plans structurés (séquences) en se basant sur des programmes officiels et des objectifs d\'apprentissage.' + SECURITY_REMINDER, 
-                    precaution: 'Toute planification doit veiller à l\'**équilibrage des difficultés** des séquences et à l\'**alignement avec le programme** officiel pour garantir la qualité de l\'enseignement.' 
+                    precaution: 'Toute planification doit veiller à l'équilibrage des difficultés des séquences et à l'alignement avec le programme officiel pour garantir la qualité de l\'enseignement.' 
                 } 
             },
             recherche: { 
                 tool: 'perplexity', 
                 precaution: 'verif_croiser_sources', 
                 rationale: { 
-                    tool: 'Perplexity est un moteur de recherche conversationnel qui **cite ses sources**, ce qui est essentiel pour la documentation factuelle.' + SECURITY_REMINDER, 
-                    precaution: 'Le risque d\'une recherche unique est le biais ou l\'hallucination. Il faut **croiser les sources** et développer l\'**esprit critique** des élèves.' 
+                    tool: 'Perplexity est un moteur de recherche conversationnel qui cite ses sources, ce qui est essentiel pour la documentation factuelle.' + SECURITY_REMINDER, 
+                    precaution: 'Le risque d\'une recherche unique est le biais ou l\'hallucination. Il faut croiser les sources et développer l'esprit critique des élèves.' 
                 } 
             },
             enigmes: { 
@@ -395,7 +395,7 @@
                 precaution: 'intention_biais', 
                 rationale: { 
                     tool: 'Claude, souvent loué pour ses capacités narratives et sa créativité, est un excellent choix pour générer des scénarios d\'énigmes ou d\'Escape Games engageants.' + SECURITY_REMINDER, 
-                    precaution: 'Les énigmes et jeux exigent un **objectif d\'apprentissage clair** et doivent être purgés de tout **biais culturel ou stéréotype** involontairement intégré par l\'IA.' 
+                    precaution: 'Les énigmes et jeux exigent un objectif d\'apprentissage clair et doivent être purgés de tout biais culturel ou stéréotype involontairement intégré par l\'IA.' 
                 } 
             },
             fiche: { 
@@ -403,7 +403,7 @@
                 precaution: 'verif_fact_seule', 
                 rationale: { 
                     tool: 'Canva, grâce à son assistant IA (Magic Design, Magic Edit, etc.), est l\'outil le plus adapté pour créer rapidement un support visuel (fiche) de qualité avec des images.' + SECURITY_REMINDER, 
-                    precaution: 'Dans une fiche de cours (support d\'autorité), la **vérification factuelle** seule est primordiale car les élèves ne remettront pas en cause le contenu du document.' 
+                    precaution: 'Dans une fiche de cours (support d\'autorité), la vérification factuelle seule est primordiale car les élèves ne remettront pas en cause le contenu du document.' 
                 } 
             },
             pages_web: { 
@@ -411,15 +411,15 @@
                 precaution: 'verif_fact_seule', 
                 rationale: { 
                     tool: 'Claude excelle dans la structuration et la génération de code (HTML/CSS), idéal pour la création rapide de pages web pédagogiques.' + SECURITY_REMINDER, 
-                    precaution: 'Comme pour la fiche, la page web est un support de référence : la **vérification factuelle** pour l\'exactitude des données est l\'unique précaution la plus essentielle.' 
+                    precaution: 'Comme pour la fiche, la page web est un support de référence : la vérification factuelle pour l\'exactitude des données est l\'unique précaution la plus essentielle.' 
                 } 
             }, 
             recherche_progression: { 
                 tool: 'claude', 
                 precaution: 'verif_fact_seule', 
                 rationale: { 
-                    tool: 'Pour construire un nouveau cours (souvent basé sur un grand nombre de ressources et d\'objectifs), Claude est privilégié pour sa capacité à gérer de **longues conversations et tâches complexes**.' + SECURITY_REMINDER, 
-                    precaution: 'Comme le contenu du cours est nouveau, la **vérification factuelle** pour l\'exactitude des données est l\'unique précaution la plus essentielle.' 
+                    tool: 'Pour construire un nouveau cours (souvent basé sur un grand nombre de ressources et d\'objectifs), Claude est privilégié pour sa capacité à gérer de longues conversations et tâches complexes.' + SECURITY_REMINDER, 
+                    precaution: 'Comme le contenu du cours est nouveau, la vérification factuelle pour l\'exactitude des données est l\'unique précaution la plus essentielle.' 
                 } 
             }
         };
@@ -525,7 +525,7 @@
         function drag(event) {
             if (!selectedTask) {
                 event.preventDefault();
-                showModal('Sélection requise', 'Veuillez d\'abord **sélectionner une Tâche** dans la liste avant de glisser-déposer un outil ou une précaution.');
+                showModal('Sélection requise', 'Veuillez d\'abord sélectionner une Tâche dans la liste avant de glisser-déposer un outil ou une précaution.');
                 return;
             }
             // Définir les données transférées : ID de la carte et type
